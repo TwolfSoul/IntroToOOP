@@ -1,12 +1,10 @@
 class Ball {
-  //declaring all information (fields) contained within the Ball class
-  int woof = 20;
+  int woof = 10;
   PVector[]loc = new PVector[woof];
   PVector[]vel = new PVector[woof];
   int diam = 10;
   color c;
 
-  //this is a constructor. you can have more than one constructor for a given class
   Ball() 
   {
     for (int i = 0; i < woof; i++)
@@ -17,7 +15,6 @@ class Ball {
     }
   }
 
-  //after declaring fields and setting up constructors, you can define your methods
   void display() {
     fill(c);
     noStroke();
