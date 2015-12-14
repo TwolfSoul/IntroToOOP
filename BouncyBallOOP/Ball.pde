@@ -1,47 +1,38 @@
 class Ball {
-  int woof = 10;
-  PVector[]loc = new PVector[woof];
-  PVector[]vel = new PVector[woof];
-  int diam = 10;
+  PVector loc;
+  PVector vel;
+  int diam;
   color c;
 
   Ball() 
   {
-    for (int i = 0; i < woof; i++)
-    {
-      loc[i] = new PVector (random(width), random(height));
-      vel[i] = new PVector (random(-5,5), random(-5,5));
-      c = color(random(255), random(255), random(255));
-    }
+    diam = 10; 
+    loc = new PVector (random(width), random(height));
+    vel = new PVector (random(-5, 5), random(-5, 5));
+    c = color(random(255), random(255), random(255));
   }
 
   void display() {
     fill(c);
     noStroke();
-    for (int i = 0; i < woof; i++)
-    {
-    ellipse(loc[i].x, loc[i].y, diam, diam);
-    }
+    ellipse(loc.x, loc.y, diam, diam);
   }
 
-  void move()
+void move()
+{
+  loc.add(vel);
+
+  if (loc.x + diam/2 >= width)
   {
-    for (int i = 0; i < woof; i++)
-    {
-      loc[i].add(vel[i]);
-
-      if (loc[i].x + diam/2 >= width)
-      {
-        vel[i].x = -abs(vel[i].x);
-      } else if (loc[i].x - diam/2 <= 0) {
-        vel[i].x = abs(vel[i].x);
-      }
-      if (loc[i].y + diam/2 >= height)
-      {
-        vel[i].y = -abs(vel[i].y);
-      } else if (loc[i].y - diam/2 <= 0) {
-        vel[i].y = abs(vel[i].y);
-      }
-    }
+    vel.x = -abs(vel.x);
+  } else if (loc.x - diam/2 <= 0) {
+    vel.x = abs(vel.x);
   }
+  if (loc.y + diam/2 >= height)
+  {
+    vel.y = -abs(vel.y);
+  } else if (loc.y - diam/2 <= 0) {
+    vel.y = abs(vel.y);
+  }
+}
 }

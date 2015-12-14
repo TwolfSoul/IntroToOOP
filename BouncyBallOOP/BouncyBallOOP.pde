@@ -5,7 +5,7 @@ void setup() {
   size(800, 600);
   for (int i = 0; i < woof; i++)
   { //initialize howl as a new object of the Ball class
-    howl[i] = new Ball(15);
+    howl[i] = new Ball();
   }
 }
 
